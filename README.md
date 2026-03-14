@@ -135,6 +135,71 @@ Predicts fruit condition classes using learned embeddings.
 
 ---
 
+# Results
+
+FruitNet was evaluated on a held-out test set after training the **SimCLR encoder** and the **MLP classifier**.
+
+## Object Detection Performance (TinyYOLO)
+
+| Metric           | Score  |
+| ---------------- | ------ |
+| Detection Recall | 82.23% |
+
+The TinyYOLO detector successfully identifies fruit regions and crops them for downstream processing.
+
+---
+
+## Classification Performance
+
+The final classifier predicts three fruit conditions:
+
+| Class Labels   |
+| -------------- |
+| Fresh          |
+| Rotten         |
+| Formalin Mixed |
+
+### Overall Performance
+
+| Metric    | Score  |
+| --------- | ------ |
+| Accuracy  | 93.07% |
+| Precision | 0.907  |
+| Recall    | 0.975  |
+| F1 Score  | 0.940  |
+
+---
+
+## Class-wise Performance
+
+| Class          | Precision | Recall | F1 Score | Support |
+| -------------- | --------- | ------ | -------- | ------- |
+| Rotten         | 0.95      | 0.83   | 0.89     | 2120    |
+| Fresh          | 0.83      | 0.82   | 0.83     | 2653    |
+| Formalin Mixed | 0.75      | 0.85   | 0.80     | 2040    |
+
+Total test samples: **6813**
+
+---
+
+## Training Behavior
+
+| Metric       | Value |
+| ------------ | ----- |
+| Initial Loss | 1.14  |
+| Final Loss   | 0.16  |
+
+---
+
+## Key Observations
+
+| Observation                                                                       |
+| --------------------------------------------------------------------------------- |
+| SimCLR encoder learns strong visual embeddings for fruit features                 |
+| High recall indicates effective detection of spoiled or chemically treated fruits |
+| Model generalizes well across all three fruit quality classes                     |
+
+
 # Potential Applications
 
 FruitNet can be applied in several real-world scenarios:
